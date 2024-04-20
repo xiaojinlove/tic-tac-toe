@@ -92,7 +92,7 @@
           setNextStep(_nextStep)
           
           //进行快照处理, 拼接对象，每一次快照是一个对象
-          setSnapShots([...snapshots], {squares: cpSquares, nextStep: _nextStep})
+          setSnapShots([...snapshots, {squares: cpSquares, nextStep: _nextStep}])
         }
         return (
           <div className="game">
@@ -116,12 +116,13 @@
             </div>
             <div className="game-info">
               <ol>
-                <li><button>跳转到最开始位置</button></li>  
-                <li><button>跳转到第 1 步</button></li>  
-                <li><button>跳转到第 2 步</button></li>  
-                <li><button>跳转到第 3 步</button></li>  
-                <li><button>跳转到第 4 步</button></li>  
-                <li><button>跳转到第 5 步</button></li>  
+                {
+                  snapshots.map((snapshot, index) => (
+                    <li key={index}>
+                      <button>{ index ? `跳转到第 ${index} 步` : '跳转到最开始位置' }</button>
+                    </li>  
+                  ))
+                } 
               </ol>
             </div>
           </div>
