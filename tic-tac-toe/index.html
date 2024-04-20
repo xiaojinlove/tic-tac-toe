@@ -42,6 +42,10 @@
         const [nextStep, setNextStep] = useState('X')
         //游戏标题
         let gameTitle = `下一步由 ${nextStep} 执棋`
+        //存储下棋步骤的记录
+        const [snapshots, setSnapShots] = useState([
+          { squares, nextStep }
+        ])
         //是否有胜出者, 有胜出者返回X或O， 没有则返回false
         const hasWinPlayer = () => {
           //胜利的所有可能情况
