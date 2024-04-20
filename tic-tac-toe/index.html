@@ -41,9 +41,9 @@
         //下一步的内容
         const [nextStep, setNextStep] = useState('X')
         //游戏标题
-        const [gameTitle, setGameTitle] = useState(`下一步由 ${nextStep} 执棋`)
+        let gameTitle = `下一步由 ${nextStep} 执棋`
         //是否有胜出者, 有胜出者返回X或O， 没有则返回false
-        const hasWinPlayer = (squares) => {
+        const hasWinPlayer = () => {
           //胜利的所有可能情况
           const winCases = [
             [0, 1, 2],
@@ -65,10 +65,20 @@
           }
           return false
         }
+        
+        //判断是否有胜出者, 并设置相应标题
+        const winner = hasWinPlayer()
+          //更改游戏标题
+          if(winner) {
+            gameTitle = `获胜者为 ${winner} `
+          } else {
+            gameTitle = `下一步由 ${nextStep} 执棋`
+          }
+        
         //设置棋盘中某一格的值
         const setSquare = (index) => {
           //如果格子已经有值，或者已经有胜出者，就不能再点
-          if (squares[index] !== '' || hasWinPlayer(squares)) return
+          if (squares[index] !== '' || hasWinPlayer()) return
           const cpSquares = squares.slice() //生成数组副本
           cpSquares[index] = nextStep //修改副本数组中的值
           setSquares(cpSquares) //使用副本数组修改原数组
@@ -76,14 +86,7 @@
           //更改下一步的值
           let _nextStep = nextStep === 'X' ? 'O':'X'
           setNextStep(_nextStep)
-          //判断是否有胜出者
-          const winner = hasWinPlayer(cpSquares)
-          //更改游戏标题
-          if(winner) {
-            setGameTitle(`获胜者为 ${winner} `)
-          } else {
-            setGameTitle(`下一步由 ${_nextStep} 执棋`)
-          }
+          
         }
         return (
           <div className="game">
