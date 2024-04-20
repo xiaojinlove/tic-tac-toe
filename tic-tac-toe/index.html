@@ -91,6 +91,8 @@
           let _nextStep = nextStep === 'X' ? 'O':'X'
           setNextStep(_nextStep)
           
+          //进行快照处理, 拼接对象，每一次快照是一个对象
+          setSnapShots([...snapshots], {squares: cpSquares, nextStep: _nextStep})
         }
         return (
           <div className="game">
