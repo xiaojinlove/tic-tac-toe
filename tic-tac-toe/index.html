@@ -42,24 +42,37 @@
         const [nextStep, setNextStep] = useState('X')
         //游戏标题
         const [gameTitle, setGameTitle] = useState(`下一步由 ${nextStep} 执棋`)
+
+        //设置棋盘中某一格的值
+        const setSquare = (index) => {
+          const cpSquares = squares.slice() //生成数组副本
+          cpSquares[index] = nextStep //修改副本数组中的值
+          setSquares(cpSquares) //使用副本数组修改原数组
+
+          //更改下一步的值
+          let _nextStep = nextStep === 'X' ? 'O':'X'
+          setNextStep(_nextStep)
+          //更改游戏标题
+          setGameTitle(`下一步由 ${_nextStep} 执棋`)
+        }
         return (
           <div className="game">
             <div className="game-board">
               <h2>{gameTitle}</h2>
               <div className="board-row">
-                <button className="square">{squares[0]}</button>
-                <button className="square">{squares[1]}</button>
-                <button className="square">{squares[2]}</button>
+                <button className="square" onClick={() => setSquare(0)}>{squares[0]}</button>
+                <button className="square" onClick={() => setSquare(1)}>{squares[1]}</button>
+                <button className="square" onClick={() => setSquare(2)}>{squares[2]}</button>
               </div>
               <div className="board-row">
-                <button className="square">{squares[3]}</button>
-                <button className="square">{squares[4]}</button>
-                <button className="square">{squares[5]}</button>
+                <button className="square" onClick={() => setSquare(3)}>{squares[3]}</button>
+                <button className="square" onClick={() => setSquare(4)}>{squares[4]}</button>
+                <button className="square" onClick={() => setSquare(5)}>{squares[5]}</button>
               </div>
               <div className="board-row">
-                <button className="square">{squares[6]}</button>
-                <button className="square">{squares[7]}</button>
-                <button className="square">{squares[8]}</button>
+                <button className="square" onClick={() => setSquare(6)}>{squares[6]}</button>
+                <button className="square" onClick={() => setSquare(7)}>{squares[7]}</button>
+                <button className="square" onClick={() => setSquare(8)}>{squares[8]}</button>
               </div>
             </div>
             <div className="game-info">
