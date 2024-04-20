@@ -100,6 +100,11 @@
           setSquares(squares)
           setNextStep(nextStep)
         }
+        //组件 - 左侧棋盘中一格
+        function Square (props) {
+          const {value, onSquareClick} = props
+          return <button className="square" onClick={onSquareClick}>{value}</button>
+        }
         //组件 - 左侧棋盘
         function Board (props) {
           const {gameTitle, squares, setSquare} = props
@@ -107,19 +112,19 @@
             <>
               <h2>{gameTitle}</h2>
               <div className="board-row">
-                <button className="square" onClick={() => setSquare(0)}>{squares[0]}</button>
-                <button className="square" onClick={() => setSquare(1)}>{squares[1]}</button>
-                <button className="square" onClick={() => setSquare(2)}>{squares[2]}</button>
+                <Square value={squares[0]} onSquareClick={() => setSquare(0)} />
+                <Square value={squares[1]} onSquareClick={() => setSquare(1)} />
+                <Square value={squares[2]} onSquareClick={() => setSquare(2)} />
               </div>
               <div className="board-row">
-                <button className="square" onClick={() => setSquare(3)}>{squares[3]}</button>
-                <button className="square" onClick={() => setSquare(4)}>{squares[4]}</button>
-                <button className="square" onClick={() => setSquare(5)}>{squares[5]}</button>
+                <Square value={squares[3]} onSquareClick={() => setSquare(3)} />
+                <Square value={squares[4]} onSquareClick={() => setSquare(4)} />
+                <Square value={squares[5]} onSquareClick={() => setSquare(5)} />
               </div>
               <div className="board-row">
-                <button className="square" onClick={() => setSquare(6)}>{squares[6]}</button>
-                <button className="square" onClick={() => setSquare(7)}>{squares[7]}</button>
-                <button className="square" onClick={() => setSquare(8)}>{squares[8]}</button>
+                <Square value={squares[6]} onSquareClick={() => setSquare(6)} />
+                <Square value={squares[7]} onSquareClick={() => setSquare(7)} />
+                <Square value={squares[8]} onSquareClick={() => setSquare(8)} />
               </div>
             </>
           )
