@@ -94,6 +94,12 @@
           //进行快照处理, 拼接对象，每一次快照是一个对象
           setSnapShots([...snapshots, {squares: cpSquares, nextStep: _nextStep}])
         }
+        //跳转，导出快照中的第 n 项
+        const jumpToSnapshot = (n) => {
+          const {squares, nextStep} = snapshots[n]
+          setSquares(squares)
+          setNextStep(nextStep)
+        }
         return (
           <div className="game">
             <div className="game-board">
@@ -119,7 +125,7 @@
                 {
                   snapshots.map((snapshot, index) => (
                     <li key={index}>
-                      <button>{ index ? `跳转到第 ${index} 步` : '跳转到最开始位置' }</button>
+                      <button onClick={() => jumpToSnapshot(index)}>{ index ? `跳转到第 ${index} 步` : '跳转到最开始位置' }</button>
                     </li>  
                   ))
                 } 
