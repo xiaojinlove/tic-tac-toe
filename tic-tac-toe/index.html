@@ -100,9 +100,11 @@
           setSquares(squares)
           setNextStep(nextStep)
         }
-        return (
-          <div className="game">
-            <div className="game-board">
+        //组件 - 左侧棋盘
+        function Board (props) {
+          const {gameTitle, squares, setSquare} = props
+          return (
+            <>
               <h2>{gameTitle}</h2>
               <div className="board-row">
                 <button className="square" onClick={() => setSquare(0)}>{squares[0]}</button>
@@ -119,6 +121,13 @@
                 <button className="square" onClick={() => setSquare(7)}>{squares[7]}</button>
                 <button className="square" onClick={() => setSquare(8)}>{squares[8]}</button>
               </div>
+            </>
+          )
+        }
+        return (
+          <div className="game">
+            <div className="game-board">
+              <Board gameTitle={gameTitle} squares={squares} setSquare={setSquare} />
             </div>
             <div className="game-info">
               <ol>
