@@ -34,26 +34,32 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-
+      const { useState } = React
       function Game () {
+        //棋盘格的数据
+        const [squares, setSquares] = useState(Array(9).fill(''))
+        //下一步的内容
+        const [nextStep, setNextStep] = useState('X')
+        //游戏标题
+        const [gameTitle, setGameTitle] = useState(`下一步由 ${nextStep} 执棋`)
         return (
           <div className="game">
             <div className="game-board">
-              <h2>下一步由 X 执棋</h2>
+              <h2>{gameTitle}</h2>
               <div className="board-row">
-                <button className="square">X</button>
-                <button className="square">X</button>
-                <button className="square">X</button>
+                <button className="square">{squares[0]}</button>
+                <button className="square">{squares[1]}</button>
+                <button className="square">{squares[2]}</button>
               </div>
               <div className="board-row">
-                <button className="square">X</button>
-                <button className="square">X</button>
-                <button className="square">X</button>
+                <button className="square">{squares[3]}</button>
+                <button className="square">{squares[4]}</button>
+                <button className="square">{squares[5]}</button>
               </div>
               <div className="board-row">
-                <button className="square">X</button>
-                <button className="square">X</button>
-                <button className="square">X</button>
+                <button className="square">{squares[6]}</button>
+                <button className="square">{squares[7]}</button>
+                <button className="square">{squares[8]}</button>
               </div>
             </div>
             <div className="game-info">
