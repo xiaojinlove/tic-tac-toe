@@ -67,6 +67,8 @@
         }
         //设置棋盘中某一格的值
         const setSquare = (index) => {
+          //如果格子已经有值，或者已经有胜出者，就不能再点
+          if (squares[index] !== '' || hasWinPlayer(squares)) return
           const cpSquares = squares.slice() //生成数组副本
           cpSquares[index] = nextStep //修改副本数组中的值
           setSquares(cpSquares) //使用副本数组修改原数组
