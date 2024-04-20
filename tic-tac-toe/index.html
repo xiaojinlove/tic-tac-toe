@@ -13,7 +13,38 @@
     <script type="text/babel">
 
       function Game () {
-        return <h1>11</h1>
+        return (
+          <div className="game">
+            <div className="game-board">
+              <h2>下一步由 X 执棋</h2>
+              <div className="board-row">
+                <button className="square">X</button>
+                <button className="square">X</button>
+                <button className="square">X</button>
+              </div>
+              <div className="board-row">
+                <button className="square">X</button>
+                <button className="square">X</button>
+                <button className="square">X</button>
+              </div>
+              <div className="board-row">
+                <button className="square">X</button>
+                <button className="square">X</button>
+                <button className="square">X</button>
+              </div>
+            </div>
+            <div className="game-info">
+              <ol>
+                <li><button>跳转到最开始位置</button></li>  
+                <li><button>跳转到第 1 步</button></li>  
+                <li><button>跳转到第 2 步</button></li>  
+                <li><button>跳转到第 3 步</button></li>  
+                <li><button>跳转到第 4 步</button></li>  
+                <li><button>跳转到第 5 步</button></li>  
+              </ol>
+            </div>
+          </div>
+        )
       }
 
       const container = document.getElementById('root')
